@@ -68,7 +68,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     User.PetNames = PetName(intPetCount);
                     break;
                 }
-                else if (CheckNum(hasPet, out number) && hasPet == "нет")
+                else if (!isNumber && hasPet == "нет")
                 {
                     User.PetNames = null;
                     break;
@@ -78,6 +78,8 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     Console.WriteLine("Введите \"да\" или \"нет\" ");
                     User.PetNames = null;
                 }
+
+
             }
             while (true);
             string colorCount;

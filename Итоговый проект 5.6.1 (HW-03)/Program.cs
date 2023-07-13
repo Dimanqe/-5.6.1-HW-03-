@@ -51,11 +51,9 @@ namespace Итоговый_проект_5._6._1__HW_03_
             User.Аge = intage;
             do
             {
-
-                Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
+                Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\"");
                 string hasPet = Console.ReadLine();
                 int number;
-
 
                 if (CheckNum(hasPet, out number) && hasPet == "да")
                 {
@@ -80,8 +78,6 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     Console.WriteLine("Введите \"да\" или \"нет\" ");
                     User.PetNames = null;
                 }
-
-
             }
             while (true);
             string colorCount;
@@ -153,7 +149,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
             Console.WriteLine("Питомцы:");
 
 
-            if(User.PetNames!=null)
+            if (User.PetNames != null)
             {
                 for (int i = 0; i < User.PetNames.Length; i++)
                 {
@@ -161,11 +157,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                 }
             }
             else
-                Console.WriteLine("питомцев нет");
-            
-
-
-
+            Console.WriteLine("питомцев нет");
 
             Console.WriteLine("\nЛюбимые цвета:");
             for (int i = 0; i < User.Colors.Length; i++)

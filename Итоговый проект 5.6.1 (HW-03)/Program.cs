@@ -62,6 +62,17 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
 
                 if (!isNumber && hasPet == "да")
+         
+                bool isOpen = true;
+            do 
+            {
+
+                Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
+                string hasPet = Console.ReadLine();
+                bool isNumber = int.TryParse(hasPet, out int number);
+               
+
+                if (!isNumber  && hasPet == "да")
                 {
                     int intPetCount;
                     string petCount;
@@ -74,7 +85,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     User.PetNames = PetName(intPetCount);
                     break;
                 }
-                else if (!isNumber && hasPet == "нет")
+                else if ((!isNumber == true && number > 0) && hasPet == "нет")
                 {
                     User.PetNames = null;
                     break;
@@ -85,7 +96,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     User.PetNames = null;
                 }
 
-
+                
             }
             while (isOpen);
 

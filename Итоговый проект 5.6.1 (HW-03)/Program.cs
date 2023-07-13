@@ -49,11 +49,6 @@ namespace Итоговый_проект_5._6._1__HW_03_
             }
             while (CheckNum(age, out intage));
             User.Аge = intage;
-
-
-
-            bool isOpen = true;
-
             do
             {
 
@@ -88,8 +83,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
 
             }
-            while (isOpen);
-
+            while (true);
             string colorCount;
             int intcolorCount;
             do
@@ -99,34 +93,43 @@ namespace Итоговый_проект_5._6._1__HW_03_
             }
             while (CheckNum(colorCount, out intcolorCount));
             User.Colors = Colors(intcolorCount);
-
-
             return User;
-
-
 
         }
         static string[] PetName(int petCount)
         {
             string[] Pets = new string[petCount];
-            for (int i = 0; i < Pets.Length; i++)
+            int intpetname;
+            for (int i = 0; i < Pets.Length;)
             {
-                Console.WriteLine($"Введите кличку {i + 1}-го питомца");
-                Pets[i] = Console.ReadLine();
+                do
+                {
+                    Console.WriteLine($"Введите кличку {i + 1}-го питомца словами");
+                    Pets[i] = Console.ReadLine();
+                }
+                while (i < Pets.Length && !CheckNum(Pets[i], out intpetname));
+                i++;
             }
             return Pets;
         }
         static string[] Colors(int colorCount)
         {
             string[] Colors = new string[colorCount];
-            for (int i = 0; i < Colors.Length; i++)
+            int intcolorname;
+
+            for (int i = 0; i < Colors.Length;)
             {
-                Console.WriteLine($"Введите название {i + 1}-го цвета");
-                Colors[i] = Console.ReadLine();
+                do
+                {
+                    Console.WriteLine($"Введите название {i + 1}-го цвета словами");
+                    Colors[i] = Console.ReadLine();
+                }
+                while (i < Colors.Length && !CheckNum(Colors[i], out intcolorname));
+                i++;
             }
+
             return Colors;
-        }        
-        
+        }
         static bool CheckNum(string number, out int corrnumber)
         {
             if (int.TryParse(number, out int intnum))
@@ -148,11 +151,22 @@ namespace Итоговый_проект_5._6._1__HW_03_
             Console.WriteLine("\n--------------------------------\n");
             Console.WriteLine($"Ваши данные:\nИмя: {User.Name}\nФамилия: {User.LastName}\nВозраст: {User.Аge}\n");
             Console.WriteLine("Питомцы:");
-            
-            for (int i = 0; i < User.PetNames.Length; i++)
+
+
+            if(User.PetNames!=null)
             {
-                Console.WriteLine(User.PetNames[i]);
+                for (int i = 0; i < User.PetNames.Length; i++)
+                {
+                    Console.WriteLine(User.PetNames[i]);
+                }
             }
+            else
+                Console.WriteLine("питомцев нет");
+            
+
+
+
+
             Console.WriteLine("\nЛюбимые цвета:");
             for (int i = 0; i < User.Colors.Length; i++)
             {

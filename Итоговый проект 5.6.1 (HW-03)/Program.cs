@@ -30,8 +30,6 @@ namespace Итоговый_проект_5._6._1__HW_03_
             }
             while (!CheckNum(stringName, out Name));
             User.Name = stringName;
-
-
             string stringLastName;
             int LastName;
             do
@@ -51,24 +49,40 @@ namespace Итоговый_проект_5._6._1__HW_03_
             }
             while (CheckNum(age, out intage));
             User.Аge = intage;
-            Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\"  ");
+
+
+            Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
             string hasPet = Console.ReadLine();
-            if (hasPet == "да")
+            bool isNumber = int.TryParse(hasPet, out int number);
+            bool isOpen = isNumber == true && number > 0;
+            while (isOpen)    
             {
-                int intPetCount;
-                string petCount;
-                do
+                
+                if (hasPet == "да")
                 {
-                    Console.WriteLine("Напишите их количество");
-                    petCount = Console.ReadLine();
+                    int intPetCount;
+                    string petCount;
+                    do
+                    {
+                        Console.WriteLine("Напишите их количество");
+                        petCount = Console.ReadLine();
+                    }
+                    while (CheckNum(petCount, out intPetCount));
+                    User.PetNames = PetName(intPetCount);
+                    break;
                 }
-                while (CheckNum(petCount, out intPetCount));
-                User.PetNames = PetName(intPetCount);
-            }
-            else
-            {
-                User.PetNames = null;
-            }
+                if (hasPet == "нет")
+                {
+                    User.PetNames = null;
+                }
+                else
+                {
+                    Console.WriteLine("Введите \"да\" или \"нет\" ");
+
+                }
+
+            }         
+
             string colorCount;
             int intcolorCount;
             do

@@ -19,7 +19,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
         static (string Name, string LastName, int Аge, string[] PetNames, string[] Colors) EnterData()
         {
             (string Name, string LastName, int Аge, string[] PetNames, string[] Colors) User;
-            
+
             string stringName;
             int Name;
             do
@@ -51,14 +51,17 @@ namespace Итоговый_проект_5._6._1__HW_03_
             User.Аge = intage;
 
 
-            Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
-            string hasPet = Console.ReadLine();
-            bool isNumber = int.TryParse(hasPet, out int number);
-            bool isOpen = isNumber == true && number > 0;
-            while (isOpen)    
+
+            bool isOpen = true;
+            do
             {
-                
-                if (hasPet == "да")
+
+                Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
+                string hasPet = Console.ReadLine();
+                bool isNumber = int.TryParse(hasPet, out int number);
+
+
+                if (!isNumber && hasPet == "да")
                 {
                     int intPetCount;
                     string petCount;
@@ -71,17 +74,20 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     User.PetNames = PetName(intPetCount);
                     break;
                 }
-                if (hasPet == "нет")
+                else if (!isNumber && hasPet == "нет")
                 {
                     User.PetNames = null;
+                    break;
                 }
                 else
                 {
                     Console.WriteLine("Введите \"да\" или \"нет\" ");
-
+                    User.PetNames = null;
                 }
 
-            }         
+
+            }
+            while (isOpen);
 
             string colorCount;
             int intcolorCount;
@@ -92,7 +98,12 @@ namespace Итоговый_проект_5._6._1__HW_03_
             }
             while (CheckNum(colorCount, out intcolorCount));
             User.Colors = Colors(intcolorCount);
+
+
             return User;
+
+
+
         }
         static string[] PetName(int petCount)
         {
@@ -144,7 +155,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
             {
                 Console.WriteLine(User.Colors[i]);
             }
-        }       
+        }
 
     }
 

@@ -53,26 +53,16 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
 
             bool isOpen = true;
+
             do
             {
 
                 Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
                 string hasPet = Console.ReadLine();
-                bool isNumber = int.TryParse(hasPet, out int number);
+                int number;
 
 
-                if (!isNumber && hasPet == "да")
-         
-                bool isOpen = true;
-            do 
-            {
-
-                Console.WriteLine("У вас есть домашние животные? Введите \"да\" или \"нет\" ");
-                string hasPet = Console.ReadLine();
-                bool isNumber = int.TryParse(hasPet, out int number);
-               
-
-                if (!isNumber  && hasPet == "да")
+                if (CheckNum(hasPet, out number) && hasPet == "да")
                 {
                     int intPetCount;
                     string petCount;
@@ -85,7 +75,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     User.PetNames = PetName(intPetCount);
                     break;
                 }
-                else if ((!isNumber == true && number > 0) && hasPet == "нет")
+                else if (CheckNum(hasPet, out number) && hasPet == "нет")
                 {
                     User.PetNames = null;
                     break;
@@ -96,7 +86,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     User.PetNames = null;
                 }
 
-                
+
             }
             while (isOpen);
 
@@ -135,7 +125,8 @@ namespace Итоговый_проект_5._6._1__HW_03_
                 Colors[i] = Console.ReadLine();
             }
             return Colors;
-        }
+        }        
+        
         static bool CheckNum(string number, out int corrnumber)
         {
             if (int.TryParse(number, out int intnum))
@@ -157,6 +148,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
             Console.WriteLine("\n--------------------------------\n");
             Console.WriteLine($"Ваши данные:\nИмя: {User.Name}\nФамилия: {User.LastName}\nВозраст: {User.Аge}\n");
             Console.WriteLine("Питомцы:");
+            
             for (int i = 0; i < User.PetNames.Length; i++)
             {
                 Console.WriteLine(User.PetNames[i]);

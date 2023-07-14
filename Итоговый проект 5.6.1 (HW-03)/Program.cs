@@ -130,15 +130,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
         }
         static bool CheckNum(string number, out int corrnumber )
         {
-
-
-
-
-
-
             bool hasaDigit=false;
-
-
             if (int.TryParse(number, out int intnum))
             {
                 if (intnum > 0)
@@ -150,8 +142,6 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
             else if (!(int.TryParse(number,out intnum)&&hasaDigit))
             {
-
-
                 foreach (char ch in number)
                 {
                     if (char.IsDigit(ch))
@@ -165,11 +155,8 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
             }
 
-
             else if (int.TryParse(number, out intnum) && hasaDigit)
             {
-
-
                 foreach (char ch in number)
                 {
                     if (char.IsDigit(ch))
@@ -184,8 +171,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
             }
 
 
-            {
-                
+            {                
                 corrnumber = 0;
                 foreach (char ch in number)
                 {

@@ -128,8 +128,17 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
             return Colors;
         }
-        static bool CheckNum(string number, out int corrnumber)
+        static bool CheckNum(string number, out int corrnumber )
         {
+
+
+
+
+
+
+            bool hasaDigit=false;
+
+
             if (int.TryParse(number, out int intnum))
             {
                 if (intnum > 0)
@@ -138,10 +147,59 @@ namespace Итоговый_проект_5._6._1__HW_03_
                     return false;
                 }
             }
+
+            else if (!(int.TryParse(number,out intnum)&&hasaDigit))
             {
+
+
+                foreach (char ch in number)
+                {
+                    if (char.IsDigit(ch))
+                    {
+                        hasaDigit = true;
+                        corrnumber = 0;
+                        return true;
+                    }
+                }
+                
+
+            }
+
+
+            else if (int.TryParse(number, out intnum) && hasaDigit)
+            {
+
+
+                foreach (char ch in number)
+                {
+                    if (char.IsDigit(ch))
+                    {
+                        hasaDigit = false;
+                        corrnumber = 0;
+                        return false;
+                    }
+                }
+
+
+            }
+
+
+            {
+                
                 corrnumber = 0;
+                foreach (char ch in number)
+                {
+                    if (char.IsDigit(ch))
+                    {
+                        return false;
+                    }
+                }
+
                 return true;
             }
+
+
+
 
         }
         static void ShowData((string Name, string LastName, int Аge, string[] PetNames, string[] Colors) User)
@@ -159,7 +217,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                 }
             }
             else
-            Console.WriteLine("питомцев нет");
+                Console.WriteLine("питомцев нет");
 
             Console.WriteLine("\nЛюбимые цвета:");
             for (int i = 0; i < User.Colors.Length; i++)

@@ -128,9 +128,9 @@ namespace Итоговый_проект_5._6._1__HW_03_
 
             return Colors;
         }
-        static bool CheckNum(string number, out int corrnumber )
+        static bool CheckNum(string number, out int corrnumber)
         {
-            bool hasaDigit=false;
+            bool hasaDigit = false;
             if (int.TryParse(number, out int intnum))
             {
                 if (intnum > 0)
@@ -140,7 +140,7 @@ namespace Итоговый_проект_5._6._1__HW_03_
                 }
             }
 
-            else if (!(int.TryParse(number,out intnum)&&hasaDigit))
+            else if (!(int.TryParse(number, out intnum) && hasaDigit))
             {
                 foreach (char ch in number)
                 {
@@ -151,7 +151,6 @@ namespace Итоговый_проект_5._6._1__HW_03_
                         return true;
                     }
                 }
-                
 
             }
 
@@ -166,12 +165,8 @@ namespace Итоговый_проект_5._6._1__HW_03_
                         return false;
                     }
                 }
-
-
             }
-
-
-            {                
+            {
                 corrnumber = 0;
                 foreach (char ch in number)
                 {
@@ -180,13 +175,8 @@ namespace Итоговый_проект_5._6._1__HW_03_
                         return false;
                     }
                 }
-
                 return true;
             }
-
-
-
-
         }
         static void ShowData((string Name, string LastName, int Аge, string[] PetNames, string[] Colors) User)
         {
